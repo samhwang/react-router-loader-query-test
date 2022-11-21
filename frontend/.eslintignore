@@ -1,0 +1,4 @@
+dist
+
+# Ignoring generated files
+public/mockServiceWorker.js

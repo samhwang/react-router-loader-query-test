@@ -2,7 +2,7 @@
   "name": "react-router-loader-query-test",
   "scripts": {
     "start:server": "pnpm run start --filter backend",
-    "start:client": ""
+    "start:client": "vite --config frontend/vite.config.ts"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
@@ -25,6 +25,7 @@
     "rimraf": "^3.0.2",
     "tsx": "^3.12.1",
     "typescript": "^4.9.3",
+    "vite": "^3.2.4",
     "vitest": "^0.25.2"
   }
 }

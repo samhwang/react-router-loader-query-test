@@ -1,32 +1,35 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import './app.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import IndexPage from './index.page';
+import ErrorPage from './error.page';
+import PingPage from './ping.page';
+import PingPreloadPage, { loader as pingPreloadLoader } from './ping-preload.page';
+
+const queryClient = new QueryClient();
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <IndexPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/ping',
+    element: <PingPage />,
+  },
+  {
+    path: '/ping-preload',
+    element: <PingPreloadPage />,
+    loader: pingPreloadLoader,
+  },
+]);
 
 function App() {
-  const [count, setCount] = useState(0);
-  const updateCount = () => setCount((prevCount) => prevCount + 1);
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/favicon.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={updateCount}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 

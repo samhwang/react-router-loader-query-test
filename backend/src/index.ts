@@ -5,6 +5,11 @@ const server = fastify();
 
 server.register(cors);
 
+export interface ServerStatus {
+  success: boolean;
+  serverStatus: 'working' | 'error';
+}
+
 server.get('/ping', async (req, res) => {
   console.log({ req, res });
   return {
