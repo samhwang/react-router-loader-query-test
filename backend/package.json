@@ -1,0 +1,6 @@
+{
+  "name": "test-backend",
+  "scripts": {
+    "start": "tsx src/index.ts"
+  }
+}
