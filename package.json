@@ -1,7 +1,7 @@
 {
   "name": "react-router-loader-query-test",
   "scripts": {
-    "start:server": "",
+    "start:server": "pnpm run start --filter backend",
     "start:client": ""
   },
   "devDependencies": {
